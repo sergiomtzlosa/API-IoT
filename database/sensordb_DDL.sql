@@ -1,4 +1,4 @@
--- Exceute: mysql -h YOUR_MYSQL_HOST -u root -p < sensordb_DDL.sql
+-- Execute: mysql -h YOUR_MYSQL_HOST -u root -p < sensordb_DDL.sql
 
 DROP DATABASE IF EXISTS `sensors`;
 
