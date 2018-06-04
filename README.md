@@ -26,7 +26,7 @@ For php5:
 
 For mac is already installed of latest versions.
 
-Install MongoDB driver:
+- Install MongoDB driver:
 
 For GNU/Linux:
 
@@ -48,7 +48,7 @@ For linux just use:
 
 ``` extension=mongodb.so ```
 
-For isntance, this is my current extension path on mac:
+For instance, this is my current extension path on mac:
 
 ``` extension="/usr/local/php5-7.1.13-20180201-134129/lib/php/extensions/no-debug-non-zts-20160303/mongodb.so" ```
 
@@ -66,6 +66,6 @@ You can also try the API with a Postman sample available on databse folder.
 
 ## Configuration
 
-Set your connection parameters for MySQL/MariaDB and Mongo on utils/config.php
+Set your connection parameters for MySQL/MariaDB and Mongo on **utils/config.php**
 
 ENJOY!
