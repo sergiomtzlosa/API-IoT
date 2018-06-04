@@ -1,0 +1,261 @@
+{
+	"info": {
+		"_postman_id": "72bf1d28-d6ef-4a60-83fb-ffc129508334",
+		"name": "Sensors (Github)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "localhost:8080/sensors/api/users",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\" : \"user_3\",\n\t\"password\" : \"passwordUser3\",\n\t\"name\" : \"User3\",\n\t\"surname\" : \"User3 description\",\n\t\"description\" : \"API user\",\n\t\"admin\" : \"0\"\n}\n"
+				},
+				"url": {
+					"raw": "localhost:8080/sensors/api/users",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sensors",
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/sensors/api/users",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-type",
+						"value": "application/json"
+					},
+					{
+						"key": "_method",
+						"value": "put",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\" : \"user_3\",\n\t\"password\" : \"passwordUser3\",\n\t\"name\" : \"User3\",\n\t\"surname\" : \"User3 description modified\",\n\t\"description\" : \"API user\",\n\t\"admin\" : \"0\",\n\t\"user_id\" : \"3\"\n}\n"
+				},
+				"url": {
+					"raw": "localhost:8080/sensors/api/users",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sensors",
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/sensors/api/users",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"user_id\" : \"3\"}"
+				},
+				"url": {
+					"raw": "localhost:8080/sensors/api/users",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sensors",
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/sensors/api/users",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"clave\" : \"valor\"}"
+				},
+				"url": {
+					"raw": "localhost:8080/sensors/api/users?user_id=3",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sensors",
+						"api",
+						"users"
+					],
+					"query": [
+						{
+							"key": "user_id",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/sensors/api/login",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\" : \"api_user\",\n\t\"password\" : \"api_user1234\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/sensors/api/login",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sensors",
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/sensors/api/values",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"clave1\" : \"valor1\",\n\t\"clave2\" : \"valor2\",\n\t\"clave3\" : \"valor3\",\n\t\"clave4\" : \"valor4\",\n\t\"clave5\" : \"valor5\",\n\t\"clave6\" : \"valor6\",\n\t\"clave7\" : \"valor7\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/sensors/api/values",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sensors",
+						"api",
+						"values"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/sensors/api/values",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"docs\" : \"1\",\n\t\"date_from\" : \"2018-04-01 00:00:00\",\n\t\"date_to\" : \"2018-04-01 00:00:00\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/sensors/api/values",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sensors",
+						"api",
+						"values"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "c99d463e-f0ff-4b42-8408-207b576e354b",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "31e90d1c-855d-44b9-a461-f89da55854d6",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
