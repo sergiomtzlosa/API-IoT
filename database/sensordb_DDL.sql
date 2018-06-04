@@ -40,7 +40,7 @@ VALUES (1, 'admin', 'e3a4a072704063daf779344cfbc804044289edd17a81913dda1b910108c
 INSERT INTO `sensors_tokens` (`token_user_id`, `token`, `creation_ts_token`, `expired`, `deleted`)
 VALUES (1, 'aca6038665c811e8a96100089be8caec', CURRENT_TIMESTAMP, 0, 0);
 
--- User: user_api / Passord: user_api1234
+-- User: api_user / Passord: api_user1234
 INSERT INTO `sensors_users` (`user_id`, `username`, `password`, `name`, `surname`, `description`, `creation_ts_user`, `ts_last_update`, `enabled`, `deleted`, `is_admin`)
 VALUES (2, 'api_user', 'de602fd56127486f6cbfa2cd3c5035a5e9b0a5ab976f38251f177d313981f207', 'Sergio', 'Martinez Losa', 'API user', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 1, 0, 0);
 

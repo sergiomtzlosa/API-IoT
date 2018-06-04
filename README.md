@@ -55,10 +55,12 @@ For instance, this is my current extension path on mac:
 ## Database and web services credentials
 
 Username: **admin**
+
 Password: **admin1234**
 
 Username: **api_user**
-Password: **user_api1234**
+
+Password: **api_user1234**
 
 All password are hashed and salted.
 
