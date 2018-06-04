@@ -6,6 +6,8 @@ No-Relational (MongoDB).
 
 Relational database is used to store data from users, it has an admin and a non-admin user built-in on he DDL.
 
+TO use this project it is mondatory to install MySQL or MariaDB, MongoDB, mysqli extension for php and MOngoDB Driver for php.
+
 ## Installation
 
 - Enable mysqli extension on your php.ini by removing semicolon for this line:
