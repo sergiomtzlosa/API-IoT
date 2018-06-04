@@ -1,5 +1,5 @@
 # API-IoT
-### A lighweight API for your IoT projects
+### A lightweight API for your IoT projects
 
 This projects is designed to save data from IoT sensors in a secureway. It uses two databses, one relational (MySQL or MariaDB) and another 
 No-Relational (MongoDB).
