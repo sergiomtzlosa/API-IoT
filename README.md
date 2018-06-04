@@ -8,6 +8,9 @@ Relational database is used to store data from users, it has an admin and a non-
 
 To use this project it is mondatory to install MySQL or MariaDB, MongoDB, mysqli extension for php and MOngoDB Driver for php.
 
+The system uses security token, they expire every 24 hours, if you want to renew then just perform login again with the same credentials of the user 
+your are using, the database will care about all!!!
+
 ## Installation
 
 - Launch the script for database creation in your MySQL:
