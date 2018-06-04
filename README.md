@@ -10,6 +10,10 @@ TO use this project it is mondatory to install MySQL or MariaDB, MongoDB, mysqli
 
 ## Installation
 
+- Launch the script for database creation in your MySQL:
+
+``` myslq -h YOUR_MYSQL_HOST -u root -p < `database/sensordb_DDL.sql ```
+ 
 - Enable mysqli extension on your php.ini by removing semicolon for this line:
 
 ```  ;extension=php_mysqli.dll  ```
