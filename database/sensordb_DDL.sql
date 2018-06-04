@@ -1,4 +1,5 @@
--- Exceute: myslq -h YOUR_MYSQL_HOST -u root -p < sensordb_DDL.sql
+-- Exceute: mysql -h YOUR_MYSQL_HOST -u root -p < sensordb_DDL.sql
+
 DROP DATABASE IF EXISTS `sensors`;
 
 CREATE DATABASE IF NOT EXISTS `sensors`;
