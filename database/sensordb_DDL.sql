@@ -1,4 +1,4 @@
--- Execute: mysql -h YOUR_MYSQL_HOST -u root -p < sensordb_DDL.sql
+-- Execute: mysql -u root -p < sensordb_DDL.sql
 
 DROP DATABASE IF EXISTS `sensors`;
 
@@ -159,37 +159,37 @@ DELIMITER //
 CREATE PROCEDURE `sensors`.`procedure_expire_timestamps`()
 MODIFIES SQL DATA
 BEGIN
-    DECLARE done INT DEFAULT 0;
-  	DECLARE creation_ts TIMESTAMP;
-  	DECLARE token_id INT(11);
-  	DECLARE cursor_tokens CURSOR FOR SELECT creation_ts_token, token_user_id FROM `sensors`.`sensors_tokens`;
+    DECLARE done INTEGER DEFAULT 0;
+  	DECLARE v_creation_ts TIMESTAMP;
+  	DECLARE v_token_id INT(11);
+  	DECLARE v_token VARCHAR(150);
+  	DECLARE cursor_tokens CURSOR FOR SELECT token_user_id, token, creation_ts_token FROM `sensors`.`sensors_tokens` AS s2 INNER JOIN `sensors`.`sensors_users` AS s1 ON s2.`token_user_id` = s1.`user_id` WHERE s1.`is_admin` = 0;
   	DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = 1;
 
 	  OPEN cursor_tokens;
 
   	read_loop: LOOP
-      FETCH cursor_tokens INTO creation_ts, token_id;
-      	IF done THEN
+      FETCH cursor_tokens INTO v_token_id, v_token, v_creation_ts;
+      	IF done = TRUE THEN
         		LEAVE read_loop;
       	END IF;
 
       	# Do substraction for creation_ts
-        SET @date_char := creation_ts;
-      	SET @diff_days := (SELECT CAST(DATEDIFF(CURDATE(), @date_char) AS UNSIGNED));
-
-        SET @token_identifier := token_id;
+      	SET @diff_days := (SELECT CAST(DATEDIFF(CURDATE(), v_creation_ts) AS UNSIGNED));
 
         # Date diff bigger or equal than one day
       	IF @diff_days >= 1 THEN
-      		UPDATE `sensors`.`sensors_tokens` AS s2
-          INNER JOIN `sensors`.`sensors_users`AS s1 ON s2.`token_user_id` = s1.`user_id`
-          SET s2.`expired` = 1
-          WHERE s2.`token_user_id` = @token_identifier AND s1.`is_admin` = 0;
-    	  END IF;
+
+      		DELETE FROM `sensors`.`sensors_tokens` WHERE `sensors_tokens`.`token_user_id` = v_token_id;
+
+      		INSERT INTO `sensors`.`sensors_tokens` (`token_user_id`, `token`, `creation_ts_token`, `expired`, `deleted`)
+      		VALUES (v_token_id, v_token, CURRENT_TIMESTAMP, 1, 0);
+
+    	END IF;
+
   	END LOOP;
 
   	CLOSE cursor_tokens;
-
 END; //
 DELIMITER ;
 
