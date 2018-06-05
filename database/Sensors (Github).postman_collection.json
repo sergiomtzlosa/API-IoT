@@ -16,6 +16,10 @@
 					{
 						"key": "Content-Type",
 						"value": "application/json"
+					},
+					{
+						"key": "Token",
+						"value": "aca6038665c811e8a96100089be8caec"
 					}
 				],
 				"body": {
@@ -50,9 +54,8 @@
 						"value": "application/json"
 					},
 					{
-						"key": "_method",
-						"value": "put",
-						"disabled": true
+						"key": "Token",
+						"value": "aca6038665c811e8a96100089be8caec"
 					}
 				],
 				"body": {
@@ -85,6 +88,10 @@
 					{
 						"key": "Content-type",
 						"value": "application/json"
+					},
+					{
+						"key": "Token",
+						"value": "aca6038665c811e8a96100089be8caec"
 					}
 				],
 				"body": {
@@ -117,6 +124,10 @@
 					{
 						"key": "Content-type",
 						"value": "application/json"
+					},
+					{
+						"key": "Token",
+						"value": "aca6038665c811e8a96100089be8caec"
 					}
 				],
 				"body": {
@@ -151,7 +162,12 @@
 					"type": "noauth"
 				},
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Content-type",
+						"value": "application/json"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\n\t\"username\" : \"api_user\",\n\t\"password\" : \"api_user1234\"\n}"
@@ -182,6 +198,10 @@
 					{
 						"key": "Content-type",
 						"value": "application/json"
+					},
+					{
+						"key": "Token",
+						"value": "aca6038665c811e8a96100089be8caec"
 					}
 				],
 				"body": {
@@ -214,6 +234,10 @@
 					{
 						"key": "Content-type",
 						"value": "application/json"
+					},
+					{
+						"key": "Token",
+						"value": "aca6038665c811e8a96100089be8caec"
 					}
 				],
 				"body": {
