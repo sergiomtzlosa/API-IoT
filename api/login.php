@@ -14,7 +14,7 @@ if (Utils::check_rest_operation($request_method, HTTP_METHODS::$HTTP_POST)) {
 
       if (!is_array($decoded) or $decoded == NULL) {
 
-          Utils::die_json('Received content contained invalid JSON', HTTP_CODES::$HTTP_GENERIC_ERROR);
+          Utils::die_json(Messages::$JSON_CONTENT_NOT_VALID, HTTP_CODES::$HTTP_GENERIC_ERROR);
       }
 
       $username = $decoded['username'];

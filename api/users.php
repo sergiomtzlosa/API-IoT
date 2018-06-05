@@ -18,7 +18,7 @@ if (Utils::check_rest_operation($request_method, HTTP_METHODS::$HTTP_POST) ||
 
       if (!is_array($decoded) or $decoded == NULL) {
 
-          Utils::die_json('Received content contained invalid JSON', HTTP_CODES::$HTTP_GENERIC_ERROR);
+          Utils::die_json(Messages::$JSON_CONTENT_NOT_VALID, HTTP_CODES::$HTTP_GENERIC_ERROR);
       }
 
       $username = $decoded['username'];
@@ -28,6 +28,11 @@ if (Utils::check_rest_operation($request_method, HTTP_METHODS::$HTTP_POST) ||
       $description = $decoded['description'];
 
       $user_management = new UserManagement();
+
+      if ($user_management->expired_token($token)) {
+
+          Utils::die_json(Messages::$TOKEN_EXPIRED, HTTP_CODES::$HTTP_GENERIC_ERROR);
+      }
 
       if (Utils::check_rest_operation($request_method, HTTP_METHODS::$HTTP_PUT)) {
 
@@ -49,20 +54,32 @@ if (Utils::check_rest_operation($request_method, HTTP_METHODS::$HTTP_POST) ||
 
   if (!is_array($decoded) or $decoded == NULL) {
 
-      Utils::die_json('Received content contained invalid JSON', HTTP_CODES::$HTTP_GENERIC_ERROR);
+      Utils::die_json(Messages::$JSON_CONTENT_NOT_VALID, HTTP_CODES::$HTTP_GENERIC_ERROR);
   }
 
   $user_id = $decoded['user_id'];
 
   $user_management = new UserManagement();
 
+echo $user_management->expired_token($token);
+
+  if ($user_management->expired_token($token)) {
+
+      Utils::die_json(Messages::$TOKEN_EXPIRED, HTTP_CODES::$HTTP_GENERIC_ERROR);
+  }
+
   $user_management->delete_user($user_id, $token);
 
 } else if (Utils::check_rest_operation($request_method, HTTP_METHODS::$HTTP_GET)) {
 
   $user_id = $_GET['user_id'];
-  
+
   $user_management = new UserManagement();
+
+  if ($user_management->expired_token($token)) {
+
+      Utils::die_json(Messages::$TOKEN_EXPIRED, HTTP_CODES::$HTTP_GENERIC_ERROR);
+  }
 
   $user_management->select_user($user_id, $token);
 

@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS `sensors`.`sensors_users` (
 CREATE TABLE IF NOT EXISTS `sensors`.`sensors_tokens` (
   `token_user_id` INT(11) unsigned NOT NULL,
   `token` VARCHAR(150) COLLATE latin1_spanish_ci DEFAULT NULL,
-  `creation_ts_token` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  `creation_ts_token` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `expired` BOOLEAN NOT NULL DEFAULT 0,
   `deleted` BOOLEAN NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
@@ -36,14 +36,14 @@ TRUNCATE TABLE `sensors`.`sensors_tokens`;
 
 -- User: admin / Passord: admin1234
 INSERT INTO `sensors_users` (`user_id`, `username`, `password`, `name`, `surname`, `description`, `creation_ts_user`, `ts_last_update`, `enabled`, `deleted`, `is_admin`)
-VALUES (1, 'admin', 'e3a4a072704063daf779344cfbc804044289edd17a81913dda1b910108cc654c', 'Sergio', 'Martinez Losa', 'Admin API user', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 1, 0, 1);
+VALUES (1, 'admin', '8d58e07ebe6faa4f35568dc01fe63152176a06e7e277759f4d9db51bbe0c4cc0', 'admin name', 'admin surname', 'Admin API user', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 1, 0, 1);
 
 INSERT INTO `sensors_tokens` (`token_user_id`, `token`, `creation_ts_token`, `expired`, `deleted`)
 VALUES (1, 'aca6038665c811e8a96100089be8caec', CURRENT_TIMESTAMP, 0, 0);
 
 -- User: api_user / Passord: api_user1234
 INSERT INTO `sensors_users` (`user_id`, `username`, `password`, `name`, `surname`, `description`, `creation_ts_user`, `ts_last_update`, `enabled`, `deleted`, `is_admin`)
-VALUES (2, 'api_user', 'de602fd56127486f6cbfa2cd3c5035a5e9b0a5ab976f38251f177d313981f207', 'Sergio', 'Martinez Losa', 'API user', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 1, 0, 0);
+VALUES (2, 'api_user', '06e242e1ee293f4d2f622376f03dd732ec8a725bb35bf73e553444664c3d64d5', 'api_user name', 'api_user surname', 'API user', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 1, 0, 0);
 
 INSERT INTO `sensors_tokens` (`token_user_id`, `token`, `creation_ts_token`, `expired`, `deleted`)
 VALUES (2, '7b774d0765d011e8a96100089be8caec', CURRENT_TIMESTAMP, 0, 0);
@@ -163,7 +163,7 @@ BEGIN
   	DECLARE v_creation_ts TIMESTAMP;
   	DECLARE v_token_id INT(11);
   	DECLARE v_token VARCHAR(150);
-  	DECLARE cursor_tokens CURSOR FOR SELECT token_user_id, token, creation_ts_token FROM `sensors`.`sensors_tokens` AS s2 INNER JOIN `sensors`.`sensors_users` AS s1 ON s2.`token_user_id` = s1.`user_id` WHERE s1.`is_admin` = 0;
+  	DECLARE cursor_tokens CURSOR FOR SELECT token_user_id, token, creation_ts_token FROM `sensors`.`sensors_tokens` AS s2 INNER JOIN `sensors`.`sensors_users` AS s1 ON s2.`token_user_id` = s1.`user_id` WHERE s1.`is_admin` = 0  AND  s2.`expired` = 0;
   	DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = 1;
 
 	  OPEN cursor_tokens;

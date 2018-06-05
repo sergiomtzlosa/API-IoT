@@ -9,7 +9,12 @@ class ValueManagement extends BaseObject {
     return "It works!!";
   }
 
-  public function open_db_connection() {
+  public function expired_token($token) {
+
+    return $this->is_expired_token($token);
+  }
+
+  public function open_db_mongo_connection() {
 
     $db_host = Config::$MONGODB_HOST;
     $db_port = Config::$MONGODB_PORT;
@@ -37,7 +42,7 @@ class ValueManagement extends BaseObject {
     return $db_link;
   }
 
-  public function close_db_connection($db_object) {
+  public function close_db_mongo_connection($db_object) {
 
     if (!is_null($db_object)) {
 
@@ -50,7 +55,7 @@ class ValueManagement extends BaseObject {
     $bulk = new MongoDB\Driver\BulkWrite;
     $bulk->insert($document);
 
-    $manager = $this->open_db_connection();
+    $manager = $this->open_db_mongo_connection();
 
     $db_used = Config::$MONGODB_DATABASE;
     $collection_used = Config::$MONGODB_COLLECTION;
@@ -84,7 +89,7 @@ class ValueManagement extends BaseObject {
 
     $this->check_field_is_empty($rows, "rows");
 
-    $manager = $this->open_db_connection();
+    $manager = $this->open_db_mongo_connection();
 
     $db_used = Config::$MONGODB_DATABASE;
     $collection_used = Config::$MONGODB_COLLECTION;

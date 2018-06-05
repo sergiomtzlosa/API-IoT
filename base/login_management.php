@@ -9,36 +9,9 @@ class LoginManagement extends BaseObject {
     return "It works!!";
   }
 
-  function open_db_connection() {
+  public function expired_token($token) {
 
-    $db_host = Config::$MARIADB_HOST;
-    $db_user = Config::$MARIADB_USER;
-    $db_password = Config::$MARIADB_PASSWORD;
-    $db_used = Config::$MARIADB_DATABASE;
-
-    // en /etc/php.ini habilitar extension=php_mysqli.dll
-    $db_link = mysqli_connect($db_host, $db_user, $db_password, $db_used);
-
-    //var_dump($db_link);
-
-    if (mysqli_connect_errno()) {
-
-      $this->die_json(Messages::$INTERNAL_ERROR, HTTP_CODES::$HTTP_GENERIC_ERROR);
-    }
-
-    $db_link->set_charset('latin1');
-
-    mysqli_select_db($db_link, $db_used);
-
-    return $db_link;
-  }
-
-  function close_db_connection($db_object) {
-
-    if (!is_null($db_object)) {
-
-      mysqli_close($db_object);
-    }
+    return $this->is_expired_token($token);
   }
 
   public function login_user($username, $password) {
