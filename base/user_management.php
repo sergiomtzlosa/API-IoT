@@ -238,7 +238,7 @@ class UserManagement extends BaseObject {
         }
     }
 
-    return false;
+    return $return_admin;
   }
 
   function username_password_exists($db_connection, $username, $password) {

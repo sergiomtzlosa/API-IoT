@@ -61,8 +61,6 @@ if (Utils::check_rest_operation($request_method, HTTP_METHODS::$HTTP_POST) ||
 
   $user_management = new UserManagement();
 
-echo $user_management->expired_token($token);
-
   if ($user_management->expired_token($token)) {
 
       Utils::die_json(Messages::$TOKEN_EXPIRED, HTTP_CODES::$HTTP_GENERIC_ERROR);
