@@ -9,11 +9,6 @@ class LoginManagement extends BaseObject {
     return "It works!!";
   }
 
-  public function expired_token($token) {
-
-    return $this->is_expired_token($token);
-  }
-
   public function login_user($username, $password) {
 
     $this->check_field_is_set($username, "username");
