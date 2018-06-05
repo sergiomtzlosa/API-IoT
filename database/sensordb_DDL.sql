@@ -18,7 +18,6 @@ CREATE TABLE IF NOT EXISTS `sensors`.`sensors_users` (
   `creation_ts_user` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   `ts_last_update` DATETIME DEFAULT NULL,
   `enabled` BOOLEAN NOT NULL DEFAULT 1,
-  `deleted` BOOLEAN NOT NULL  DEFAULT 0,
   `is_admin` BOOLEAN NOT NULL DEFAULT 0,
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
@@ -27,26 +26,25 @@ CREATE TABLE IF NOT EXISTS `sensors`.`sensors_tokens` (
   `token_user_id` INT(11) unsigned NOT NULL,
   `token` VARCHAR(150) COLLATE latin1_spanish_ci DEFAULT NULL,
   `creation_ts_token` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  `expired` BOOLEAN NOT NULL DEFAULT 0,
-  `deleted` BOOLEAN NOT NULL DEFAULT 0
+  `expired` BOOLEAN NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 TRUNCATE TABLE `sensors`.`sensors_users`;
 TRUNCATE TABLE `sensors`.`sensors_tokens`;
 
 -- User: admin / Passord: admin1234
-INSERT INTO `sensors_users` (`user_id`, `username`, `password`, `name`, `surname`, `description`, `creation_ts_user`, `ts_last_update`, `enabled`, `deleted`, `is_admin`)
-VALUES (1, 'admin', '8d58e07ebe6faa4f35568dc01fe63152176a06e7e277759f4d9db51bbe0c4cc0', 'admin name', 'admin surname', 'Admin API user', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 1, 0, 1);
+INSERT INTO `sensors_users` (`user_id`, `username`, `password`, `name`, `surname`, `description`, `creation_ts_user`, `ts_last_update`, `enabled`, `is_admin`)
+VALUES (1, 'admin', '8d58e07ebe6faa4f35568dc01fe63152176a06e7e277759f4d9db51bbe0c4cc0', 'admin name', 'admin surname', 'Admin API user', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 1, 1);
 
-INSERT INTO `sensors_tokens` (`token_user_id`, `token`, `creation_ts_token`, `expired`, `deleted`)
-VALUES (1, 'aca6038665c811e8a96100089be8caec', CURRENT_TIMESTAMP, 0, 0);
+INSERT INTO `sensors_tokens` (`token_user_id`, `token`, `creation_ts_token`, `expired`)
+VALUES (1, 'aca6038665c811e8a96100089be8caec', CURRENT_TIMESTAMP, 0);
 
 -- User: api_user / Passord: api_user1234
-INSERT INTO `sensors_users` (`user_id`, `username`, `password`, `name`, `surname`, `description`, `creation_ts_user`, `ts_last_update`, `enabled`, `deleted`, `is_admin`)
-VALUES (2, 'api_user', '06e242e1ee293f4d2f622376f03dd732ec8a725bb35bf73e553444664c3d64d5', 'api_user name', 'api_user surname', 'API user', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 1, 0, 0);
+INSERT INTO `sensors_users` (`user_id`, `username`, `password`, `name`, `surname`, `description`, `creation_ts_user`, `ts_last_update`, `enabled`, `is_admin`)
+VALUES (2, 'api_user', '06e242e1ee293f4d2f622376f03dd732ec8a725bb35bf73e553444664c3d64d5', 'api_user name', 'api_user surname', 'API user', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 1, 0);
 
-INSERT INTO `sensors_tokens` (`token_user_id`, `token`, `creation_ts_token`, `expired`, `deleted`)
-VALUES (2, '7b774d0765d011e8a96100089be8caec', CURRENT_TIMESTAMP, 0, 0);
+INSERT INTO `sensors_tokens` (`token_user_id`, `token`, `creation_ts_token`, `expired`)
+VALUES (2, '7b774d0765d011e8a96100089be8caec', CURRENT_TIMESTAMP, 0);
 
 -- Insert a new token when user inserts new data
 DROP TRIGGER IF EXISTS `sensors`.`trigger_insert_sensor_tokensnew_user`;
@@ -70,24 +68,6 @@ MODIFIES SQL DATA
 
      INSERT INTO `sensors`.`sensors_tokens` (`token_user_id`, `token`, `creation_ts_token`)
      VALUES (@token_id, @token, @date_now);
-
-    END; //
-DELIMITER ;
-
--- Update tokens after user updates its data
-DROP TRIGGER IF EXISTS `sensors`.`trigger_update_sensor_tokens`;
-
-DELIMITER //
-CREATE TRIGGER `sensors`.`trigger_update_sensor_tokens`
-AFTER UPDATE ON `sensors`.`sensors_users` FOR EACH ROW
-    BEGIN
-
-		  SET @deleted_value := OLD.`deleted`;
-      SET @token_id := OLD.`user_id`;
-
-     	UPDATE `sensors`.`sensors_tokens`
-      SET `sensors_tokens`.`deleted` = @deleted_value
-      WHERE `sensors_tokens`.`token_user_id` = @token_id;
 
     END; //
 DELIMITER ;
@@ -163,7 +143,7 @@ BEGIN
   	DECLARE v_creation_ts TIMESTAMP;
   	DECLARE v_token_id INT(11);
   	DECLARE v_token VARCHAR(150);
-  	DECLARE cursor_tokens CURSOR FOR SELECT token_user_id, token, creation_ts_token FROM `sensors`.`sensors_tokens` AS s2 INNER JOIN `sensors`.`sensors_users` AS s1 ON s2.`token_user_id` = s1.`user_id` WHERE s1.`is_admin` = 0  AND  s2.`expired` = 0;
+  	DECLARE cursor_tokens CURSOR FOR SELECT token_user_id, token, creation_ts_token FROM `sensors`.`sensors_tokens` AS s2 INNER JOIN `sensors`.`sensors_users` AS s1 ON s2.`token_user_id` = s1.`user_id` WHERE s1.`is_admin` = 0 AND  s2.`expired` = 0;
   	DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = 1;
 
 	  OPEN cursor_tokens;
@@ -182,8 +162,8 @@ BEGIN
 
       		DELETE FROM `sensors`.`sensors_tokens` WHERE `sensors_tokens`.`token_user_id` = v_token_id;
 
-      		INSERT INTO `sensors`.`sensors_tokens` (`token_user_id`, `token`, `creation_ts_token`, `expired`, `deleted`)
-      		VALUES (v_token_id, v_token, CURRENT_TIMESTAMP, 1, 0);
+      		INSERT INTO `sensors`.`sensors_tokens` (`token_user_id`, `token`, `creation_ts_token`, `expired`)
+      		VALUES (v_token_id, v_token, CURRENT_TIMESTAMP, 1);
 
     	END IF;
 
