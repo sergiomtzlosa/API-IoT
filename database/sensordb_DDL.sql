@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS `sensors`.`sensors_users` (
 CREATE TABLE IF NOT EXISTS `sensors`.`sensors_tokens` (
   `token_user_id` INT(11) unsigned NOT NULL,
   `token` VARCHAR(150) COLLATE latin1_spanish_ci DEFAULT NULL,
-  `creation_ts_token` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `creation_ts_token` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   `expired` BOOLEAN NOT NULL DEFAULT 0,
   `deleted` BOOLEAN NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
