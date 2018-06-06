@@ -15,7 +15,7 @@ your are using, the database will care about all!!!
 
 - Launch the script for database creation in your MySQL:
 
-``` mysql -h YOUR_MYSQL_HOST -u root -p < `database/sensordb_DDL.sql ```
+``` mysql -h YOUR_MYSQL_HOST -u root -p < database/sensordb_DDL.sql ```
  
 - Enable mysqli extension on your php.ini by removing semicolon for this line:
 
@@ -72,6 +72,12 @@ For instance, this is my current extension path on mac:
 All password are hashed and salted.
 
 You can also try the API with a Postman sample available on databse folder.
+
+## .htaccess file
+
+This project has an htaccess file to hide the file extensions, rename the file to:
+
+``` .htaccess ```
 
 ## Configuration
 
