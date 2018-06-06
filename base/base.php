@@ -54,10 +54,8 @@ class BaseObject {
     $db_password = Config::$MARIADB_PASSWORD;
     $db_used = Config::$MARIADB_DATABASE;
 
-    // en /etc/php.ini habilitar extension=php_mysqli.dll
+    // In /etc/php.ini enable extension=php_mysqli.dll
     $db_link = mysqli_connect($db_host, $db_user, $db_password, $db_used);
-
-    //var_dump($db_link);
 
     if (mysqli_connect_errno()) {
 
@@ -107,5 +105,35 @@ class BaseObject {
     $this->close_db_connection($db_connection);
 
     return $expired;
+  }
+
+  protected function is_user_enabled($token) {
+
+    $sql = "SELECT enabled FROM sensors_users AS s1 INNER JOIN sensors_tokens AS s2 ON s1.user_id = s2.token_user_id WHERE s2.token = '" . $token . "' LIMIT 1";
+
+    $db_connection = $this->open_db_connection();
+
+    $result = $db_connection->query($sql);
+    $rows = $result->num_rows;
+
+    $enabled_user = false;
+
+    if ($rows > 0) {
+
+        while($row = $result->fetch_assoc()) {
+
+            $check_enabled = strval($row["enabled"]);
+
+            if ($check_enabled == "1") {
+
+              $enabled_user = true;
+              break;
+            }
+        }
+    }
+
+    $this->close_db_connection($db_connection);
+
+    return $enabled_user;
   }
 }

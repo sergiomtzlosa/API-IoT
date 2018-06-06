@@ -12,4 +12,5 @@ class Messages {
   public static $DATA_NOT_FOUND = "Data not found";
   public static $JSON_CONTENT_NOT_VALID = "Received content contained invalid JSON";
   public static $TOKEN_EXPIRED = "Token expired";
+  public static $USER_DISABLED = "User disabled in system";
 }

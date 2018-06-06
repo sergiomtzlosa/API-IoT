@@ -14,6 +14,11 @@ class UserManagement extends BaseObject {
     return $this->is_expired_token($token);
   }
 
+  public function enabled_user($token) {
+
+    return $this->is_user_enabled($token);
+  }
+  
   public function insert_new_user($username, $password, $name, $surname, $description, $is_admin, $token) {
 
     $this->check_field_is_set($username, "username");

@@ -29,6 +29,11 @@ if (Utils::check_rest_operation($request_method, HTTP_METHODS::$HTTP_POST) ||
 
       $user_management = new UserManagement();
 
+      if (!$user_management->enabled_user($token)) {
+
+          Utils::die_json(Messages::$USER_DISABLED, HTTP_CODES::$HTTP_GENERIC_ERROR);
+      }
+
       if ($user_management->expired_token($token)) {
 
           Utils::die_json(Messages::$TOKEN_EXPIRED, HTTP_CODES::$HTTP_GENERIC_ERROR);
@@ -61,6 +66,11 @@ if (Utils::check_rest_operation($request_method, HTTP_METHODS::$HTTP_POST) ||
 
   $user_management = new UserManagement();
 
+  if (!$user_management->enabled_user($token)) {
+
+      Utils::die_json(Messages::$USER_DISABLED, HTTP_CODES::$HTTP_GENERIC_ERROR);
+  }
+
   if ($user_management->expired_token($token)) {
 
       Utils::die_json(Messages::$TOKEN_EXPIRED, HTTP_CODES::$HTTP_GENERIC_ERROR);
@@ -73,6 +83,11 @@ if (Utils::check_rest_operation($request_method, HTTP_METHODS::$HTTP_POST) ||
   $user_id = $_GET['user_id'];
 
   $user_management = new UserManagement();
+
+  if (!$user_management->enabled_user($token)) {
+
+      Utils::die_json(Messages::$USER_DISABLED, HTTP_CODES::$HTTP_GENERIC_ERROR);
+  }
 
   if ($user_management->expired_token($token)) {
 

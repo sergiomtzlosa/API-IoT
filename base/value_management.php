@@ -14,6 +14,11 @@ class ValueManagement extends BaseObject {
     return $this->is_expired_token($token);
   }
 
+  public function enabled_user($token) {
+
+    return $this->is_user_enabled($token);
+  }
+
   public function open_db_mongo_connection() {
 
     $db_host = Config::$MONGODB_HOST;
@@ -22,17 +27,12 @@ class ValueManagement extends BaseObject {
     $db_password = Config::$MONGODB_PASSWORD;
 
     // https://stackoverflow.com/questions/34486808/installing-the-php-7-mongodb-client-driver
-    // instalalar pecl y poner la extension en el /etc/php.ini
-    // sudo /Users/sid/pear/bin/pecl install mongodb
+    // Install pecl and set extension in /etc/php.ini
+    // sudo pecl install mongodb
     // extension="/usr/local/php5-7.1.13-20180201-134129/lib/php/extensions/no-debug-non-zts-20160303/mongodb.so"
     $connection_string = "mongodb://" . $db_user . ":" . $db_password . "@" . $db_host . ":" . $db_port;
 
-    //echo("conn: " + $connection_string);
-
     $db_link = new MongoDB\Driver\Manager($connection_string);
-
-
-    //var_dump($db_link);
 
     if (!$db_link) {
 
