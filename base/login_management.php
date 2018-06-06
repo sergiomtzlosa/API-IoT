@@ -9,11 +9,11 @@ class LoginManagement extends BaseObject {
     return "It works!!";
   }
 
-  public function enabled_user($token) {
+  public function enabled_user($username) {
 
-    return $this->is_user_enabled($token);
+    return $this->is_user_enabled_by_username($username);
   }
-  
+
   public function login_user($username, $password) {
 
     $this->check_field_is_set($username, "username");

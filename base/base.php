@@ -136,4 +136,34 @@ class BaseObject {
 
     return $enabled_user;
   }
+
+  protected function is_user_enabled_by_username($username) {
+
+    $sql = "SELECT enabled FROM sensors_users WHERE username = '" . $username . "' LIMIT 1";
+
+    $db_connection = $this->open_db_connection();
+
+    $result = $db_connection->query($sql);
+    $rows = $result->num_rows;
+
+    $enabled_user = false;
+
+    if ($rows > 0) {
+
+        while($row = $result->fetch_assoc()) {
+
+          $check_enabled = strval($row["enabled"]);
+
+          if ($check_enabled == "1") {
+
+            $enabled_user = true;
+            break;
+          }
+        }
+    }
+
+    $this->close_db_connection($db_connection);
+
+    return $enabled_user;
+  }
 }

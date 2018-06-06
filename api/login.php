@@ -22,7 +22,7 @@ if (Utils::check_rest_operation($request_method, HTTP_METHODS::$HTTP_POST)) {
 
       $login_management = new LoginManagement();
 
-      if (!$login_management->enabled_user($token)) {
+      if (!$login_management->enabled_user($username)) {
 
           Utils::die_json(Messages::$USER_DISABLED, HTTP_CODES::$HTTP_GENERIC_ERROR);
       }
