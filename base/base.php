@@ -8,10 +8,10 @@ include('../utils/messages.php');
 
 date_default_timezone_set('Europe/Madrid');
 
-ini_set('display_errors', 1);
+//ini_set('display_errors', 1);
 //ini_set('display_startup_errors', 1);
 //error_reporting(E_ALL);
-error_reporting(E_ALL | E_STRICT);
+//error_reporting(E_ALL | E_STRICT);
 
 class BaseObject {
 
