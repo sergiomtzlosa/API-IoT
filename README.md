@@ -1,14 +1,14 @@
 # API IoT
 ### A lightweight API for your IoT projects
 
-This projects is designed to save data from IoT sensors in a secureway. It uses two databses, one relational (MySQL or MariaDB) and another 
+This projects is designed to save data from IoT sensors in a secure way. It uses two databases, one relational (MySQL or MariaDB) and another
 No-Relational (MongoDB).
 
 Relational database is used to store data from users, it has an admin and a non-admin user built-in on he DDL.
 
-To use this project it is mondatory to install MySQL or MariaDB, MongoDB, mysqli extension for php and MOngoDB Driver for php.
+To use this project it is mandatory to install MySQL or MariaDB, MongoDB, mysqli extension for php and MongoDB Driver for php.
 
-The system uses security token, they expire every 24 hours, if you want to renew then just perform login again with the same credentials of the user 
+The system uses security token, they expire every 24 hours, if you want to renew then just perform login again with the same credentials of the user
 your are using, the database will care about all!!!
 
 ## Installation
@@ -16,7 +16,7 @@ your are using, the database will care about all!!!
 - Launch the script for database creation in your MySQL:
 
 ``` mysql -h YOUR_MYSQL_HOST -u root -p < database/sensordb_DDL.sql ```
- 
+
 - Enable mysqli extension on your php.ini by removing semicolon for this line:
 
 ```  ;extension=php_mysqli.dll  ```
@@ -71,13 +71,149 @@ For instance, this is my current extension path on mac:
 
 All password are hashed and salted.
 
-You can also try the API with a Postman sample available on databse folder.
+You can also try the API with a Postman sample available on database folder.
 
 ## .htaccess file
 
 This project has an htaccess file to hide the file extensions, rename the file to:
 
 ``` .htaccess ```
+
+## Examples
+
+Lets say that you have a folder called "sensors" on your Apache DocumentRoot, then all services will point on:
+
+``` /services/api/login ```
+``` /services/api/users ```
+``` /services/api/values ```
+
+These are some examples for each request with cURL program:
+
+- Create new user
+
+```
+curl -X POST \
+  http://localhost:8080/sensors/api/users \
+  -H 'Cache-Control: no-cache' \
+  -H 'Content-Type: application/json' \
+  -H 'Postman-Token: ddaef30e-afdf-46e5-87c6-12bbb48c8d1c' \
+  -H 'Token: aca6038665c811e8a96100089be8caec' \
+  -d '{
+	"username" : "user_3",
+	"password" : "passwordUser3",
+	"name" : "User3",
+	"surname" : "User3 description",
+	"description" : "API user",
+	"admin" : "0"
+}'
+```
+
+- Update user:
+
+```
+curl -X PUT \
+  http://localhost:8080/sensors/api/users \
+  -H 'Cache-Control: no-cache' \
+  -H 'Content-type: application/json' \
+  -H 'Postman-Token: 3d64e227-86de-40d4-986f-933fb1877c0e' \
+  -H 'Token: aca6038665c811e8a96100089be8caec' \
+  -d '{
+	"username" : "user_3",
+	"password" : "passwordUser3",
+	"name" : "User3",
+	"surname" : "User3 description modified",
+	"description" : "API user",
+	"admin" : "0",
+	"user_id" : "3"
+}'
+```
+
+- Delete user
+
+```
+curl -X DELETE \
+  http://localhost:8080/sensors/api/users \
+  -H 'Cache-Control: no-cache' \
+  -H 'Content-type: application/json' \
+  -H 'Postman-Token: 916a540c-9d59-45e2-bd24-575883a5c368' \
+  -H 'Token: aca6038665c811e8a96100089be8caec' \
+  -d '{"user_id" : "3"}'
+```
+
+- Get user information
+
+```
+curl -X GET \
+  'http://localhost:8080/sensors/api/users?user_id=1' \
+  -H 'Cache-Control: no-cache' \
+  -H 'Content-type: application/json' \
+  -H 'Postman-Token: 1e525061-d34b-4373-9a5d-5c0a969ee909' \
+  -H 'Token: aca6038665c811e8a96100089be8caec' \
+```
+
+- Perform user login
+
+```
+curl -X POST \
+  http://localhost:8080/sensors/api/login \
+  -H 'Cache-Control: no-cache' \
+  -H 'Content-type: application/json' \
+  -H 'Postman-Token: 05c04996-812d-47b6-a609-beb3edcd4c10' \
+  -d '{
+	"username" : "api_user",
+	"password" : "api_user1234"
+}'
+```
+
+- Insert new document in MongoDB database
+
+```
+curl -X POST \
+  http://localhost:8080/sensors/api/values \
+  -H 'Cache-Control: no-cache' \
+  -H 'Content-type: application/json' \
+  -H 'Postman-Token: 903cd60d-8403-411d-8555-9355968287b8' \
+  -H 'Token: aca6038665c811e8a96100089be8caec' \
+  -d '{
+	"key1" : "value1",
+	"key2" : "valor2",
+	"key3" : "valor3",
+	"key4" : "valor4",
+	"key5" : "valor5",
+	"key6" : "valor6",
+	"key7" : "valor7"
+}'
+```
+
+- Query documents from MongoDB with limit 1
+
+```
+curl -X PUT \
+  http://localhost:8080/sensors/api/values \
+  -H 'Cache-Control: no-cache' \
+  -H 'Content-type: application/json' \
+  -H 'Postman-Token: d52562b4-77a8-4674-bd0b-55d8e4870f18' \
+  -H 'Token: aca6038665c811e8a96100089be8caec' \
+  -d '{
+	"docs" : "1"
+}'
+```
+
+- Query documents from MongoDB with limit 1 between two dates given
+
+```
+curl -X PUT \
+  http://localhost:8080/sensors/api/values \
+  -H 'Cache-Control: no-cache' \
+  -H 'Content-type: application/json' \
+  -H 'Postman-Token: 436ec6bc-91bf-4728-baed-677a4db439d5' \
+  -H 'Token: aca6038665c811e8a96100089be8caec' \
+  -d '{
+	"docs" : "1",
+	"date_from" : "2018-05-01 00:00:00",
+	"date_to" : "2018-05-30 00:00:00"
+}'
+```
 
 ## Configuration
 
