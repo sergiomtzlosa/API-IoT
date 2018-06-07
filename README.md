@@ -87,6 +87,12 @@ Lets say that you have a folder called "sensors" on your Apache DocumentRoot, th
 ``` /services/api/users ```
 ``` /services/api/values ```
 
+You can use the Postman file in "database/Sensors (Github).postman_collection.json", if you do not have Postman get it here:
+
+[https://www.getpostman.com/](https://www.getpostman.com/)
+
+Or if you do not want to use this application you can also use the examples below in cURL.
+
 These are some examples for each request with cURL program:
 
 - Create new user
