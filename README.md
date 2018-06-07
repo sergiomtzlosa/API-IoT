@@ -84,7 +84,9 @@ This project has an htaccess file to hide the file extensions, rename the file t
 Lets say that you have a folder called "sensors" on your Apache DocumentRoot, then all services will point on:
 
 ``` /sensors/api/login ```
+
 ``` /sensors/api/users ```
+
 ``` /sensors/api/values ```
 
 You can use the Postman file in "database/Sensors (Github).postman_collection.json", if you do not have Postman get it here:
