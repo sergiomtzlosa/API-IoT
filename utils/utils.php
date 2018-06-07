@@ -42,7 +42,7 @@ class Utils {
 
     if (strcasecmp(strtolower($contentType), 'application/json') != 0) {
 
-        Utils::die_json(Messages::$CONTENT_TYPE_NOT_VALID, HTTP_CODE::$HTTP_GENERIC_ERROR);
+        Utils::die_json(Messages::$CONTENT_TYPE_NOT_VALID, HTTP_CODES::$HTTP_GENERIC_ERROR);
     }
   }
 
