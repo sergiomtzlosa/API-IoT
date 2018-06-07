@@ -8,7 +8,7 @@ ErrorDocument 404 /errors/404.html
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule .? - [E=Authorization:%{HTTP:Token}]
 RewriteRule ^([^/]+)/$ $1.php
-RewriteRule ^([^/]+)/([^/]+)/$ /$1/$2.php [OR, N]
+RewriteRule ^([^/]+)/([^/]+)/$ /$1/$2.php [N]
 RewriteRule ^([^/]+)/([^/]+)/$ /$1/$2.html [N]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
