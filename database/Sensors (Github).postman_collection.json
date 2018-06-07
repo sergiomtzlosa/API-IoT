@@ -206,7 +206,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"key1\" : \"value1\",\n\t\"key2\" : \"valor2\",\n\t\"key3\" : \"valor3\",\n\t\"key4\" : \"valor4\",\n\t\"key5\" : \"valor5\",\n\t\"key6\" : \"valor6\",\n\t\"key7\" : \"valor7\"\n}"
+					"raw": "{\n\t\"key1\" : \"value1\",\n\t\"key2\" : \"value2\",\n\t\"key3\" : \"value3\",\n\t\"key4\" : \"value4\",\n\t\"key5\" : \"value5\",\n\t\"key6\" : \"value6\",\n\t\"key7\" : \"value7\"\n}"
 				},
 				"url": {
 					"raw": "localhost:8080/sensors/api/values",

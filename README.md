@@ -182,12 +182,12 @@ curl -X POST \
   -H 'Token: aca6038665c811e8a96100089be8caec' \
   -d '{
 	"key1" : "value1",
-	"key2" : "valor2",
-	"key3" : "valor3",
-	"key4" : "valor4",
-	"key5" : "valor5",
-	"key6" : "valor6",
-	"key7" : "valor7"
+	"key2" : "value2",
+	"key3" : "value3",
+	"key4" : "value4",
+	"key5" : "value5",
+	"key6" : "value6",
+	"key7" : "value7"
 }'
 ```
 
