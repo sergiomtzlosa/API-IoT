@@ -1,5 +1,4 @@
 RewriteEngine On
-Options All -Indexes
 #AuthType Basic
 #AuthName "Sensors Protected area"
 #AuthUserFile /Users/sid/pass_api_sensors/.htpasswd
