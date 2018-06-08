@@ -104,7 +104,6 @@ curl -X POST \
   http://localhost:8080/sensors/api/users \
   -H 'Cache-Control: no-cache' \
   -H 'Content-Type: application/json' \
-  -H 'Postman-Token: ddaef30e-afdf-46e5-87c6-12bbb48c8d1c' \
   -H 'Token: aca6038665c811e8a96100089be8caec' \
   -d '{
 	"username" : "user_3",
@@ -123,7 +122,6 @@ curl -X PUT \
   http://localhost:8080/sensors/api/users \
   -H 'Cache-Control: no-cache' \
   -H 'Content-type: application/json' \
-  -H 'Postman-Token: 3d64e227-86de-40d4-986f-933fb1877c0e' \
   -H 'Token: aca6038665c811e8a96100089be8caec' \
   -d '{
 	"username" : "user_3",
@@ -143,7 +141,6 @@ curl -X DELETE \
   http://localhost:8080/sensors/api/users \
   -H 'Cache-Control: no-cache' \
   -H 'Content-type: application/json' \
-  -H 'Postman-Token: 916a540c-9d59-45e2-bd24-575883a5c368' \
   -H 'Token: aca6038665c811e8a96100089be8caec' \
   -d '{"user_id" : "3"}'
 ```
@@ -155,7 +152,6 @@ curl -X GET \
   'http://localhost:8080/sensors/api/users?user_id=1' \
   -H 'Cache-Control: no-cache' \
   -H 'Content-type: application/json' \
-  -H 'Postman-Token: 1e525061-d34b-4373-9a5d-5c0a969ee909' \
   -H 'Token: aca6038665c811e8a96100089be8caec' \
 ```
 
@@ -166,7 +162,6 @@ curl -X POST \
   http://localhost:8080/sensors/api/login \
   -H 'Cache-Control: no-cache' \
   -H 'Content-type: application/json' \
-  -H 'Postman-Token: 05c04996-812d-47b6-a609-beb3edcd4c10' \
   -d '{
 	"username" : "api_user",
 	"password" : "api_user1234"
@@ -180,7 +175,6 @@ curl -X POST \
   http://localhost:8080/sensors/api/values \
   -H 'Cache-Control: no-cache' \
   -H 'Content-type: application/json' \
-  -H 'Postman-Token: 903cd60d-8403-411d-8555-9355968287b8' \
   -H 'Token: aca6038665c811e8a96100089be8caec' \
   -d '{
 	"key1" : "value1",
@@ -200,7 +194,6 @@ curl -X PUT \
   http://localhost:8080/sensors/api/values \
   -H 'Cache-Control: no-cache' \
   -H 'Content-type: application/json' \
-  -H 'Postman-Token: d52562b4-77a8-4674-bd0b-55d8e4870f18' \
   -H 'Token: aca6038665c811e8a96100089be8caec' \
   -d '{
 	"docs" : "1"
