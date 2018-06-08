@@ -2,9 +2,9 @@
 
 DROP DATABASE IF EXISTS `sensors`;
 
-CREATE DATABASE IF NOT EXISTS `sensors`;
-
-ALTER DATABASE `sensors` DEFAULT COLLATE latin1_spanish_ci;
+CREATE DATABASE IF NOT EXISTS `sensors`
+CHARACTER SET utf8
+COLLATE utf8_general_ci;
 
 USE `sensors`;
 
@@ -12,22 +12,22 @@ CREATE TABLE IF NOT EXISTS `sensors`.`sensors_users` (
   `user_id` INT(11) unsigned NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(150) DEFAULT NULL,
   `password` VARCHAR(150) DEFAULT NULL,
-  `name` VARCHAR(150) COLLATE latin1_spanish_ci DEFAULT NULL,
-  `surname` VARCHAR(150) COLLATE latin1_spanish_ci DEFAULT NULL,
-  `description` VARCHAR(150) COLLATE latin1_spanish_ci DEFAULT NULL,
+  `name` VARCHAR(150) COLLATE utf8_general_ci DEFAULT NULL,
+  `surname` VARCHAR(150) COLLATE utf8_general_ci DEFAULT NULL,
+  `description` VARCHAR(150) COLLATE utf8_general_ci DEFAULT NULL,
   `creation_ts_user` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   `ts_last_update` DATETIME DEFAULT NULL,
   `enabled` BOOLEAN NOT NULL DEFAULT 1,
   `is_admin` BOOLEAN NOT NULL DEFAULT 0,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 CREATE TABLE IF NOT EXISTS `sensors`.`sensors_tokens` (
   `token_user_id` INT(11) unsigned NOT NULL,
-  `token` VARCHAR(150) COLLATE latin1_spanish_ci DEFAULT NULL,
+  `token` VARCHAR(150) COLLATE utf8_general_ci DEFAULT NULL,
   `creation_ts_token` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   `expired` BOOLEAN NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 TRUNCATE TABLE `sensors`.`sensors_users`;
 TRUNCATE TABLE `sensors`.`sensors_tokens`;
