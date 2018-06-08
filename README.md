@@ -207,7 +207,6 @@ curl -X PUT \
   http://localhost:8080/sensors/api/values \
   -H 'Cache-Control: no-cache' \
   -H 'Content-type: application/json' \
-  -H 'Postman-Token: 436ec6bc-91bf-4728-baed-677a4db439d5' \
   -H 'Token: aca6038665c811e8a96100089be8caec' \
   -d '{
 	"docs" : "1",
