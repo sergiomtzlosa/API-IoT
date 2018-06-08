@@ -135,7 +135,7 @@
 					"raw": "{\"clave\" : \"valor\"}"
 				},
 				"url": {
-					"raw": "localhost:8080/sensors/api/users?user_id=3",
+					"raw": "localhost:8080/sensors/api/users?user_id=1",
 					"host": [
 						"localhost"
 					],
@@ -148,7 +148,7 @@
 					"query": [
 						{
 							"key": "user_id",
-							"value": "3"
+							"value": "1"
 						}
 					]
 				}
@@ -206,7 +206,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"clave1\" : \"valor1\",\n\t\"clave2\" : \"valor2\",\n\t\"clave3\" : \"valor3\",\n\t\"clave4\" : \"valor4\",\n\t\"clave5\" : \"valor5\",\n\t\"clave6\" : \"valor6\",\n\t\"clave7\" : \"valor7\"\n}"
+					"raw": "{\n\t\"key1\" : \"value1\",\n\t\"key2\" : \"value2\",\n\t\"key3\" : \"value3\",\n\t\"key4\" : \"value4\",\n\t\"key5\" : \"value5\",\n\t\"key6\" : \"value6\",\n\t\"key7\" : \"value7\"\n}"
 				},
 				"url": {
 					"raw": "localhost:8080/sensors/api/values",

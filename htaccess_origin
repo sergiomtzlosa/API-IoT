@@ -1,0 +1,16 @@
+RewriteEngine On
+#AuthType Basic
+#AuthName "Sensors Protected area"
+#AuthUserFile /Users/sid/pass_api_sensors/.htpasswd
+#Require valid-user
+DirectoryIndex index.html
+ErrorDocument 404 /errors/404.html
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule .? - [E=Authorization:%{HTTP:Token}]
+RewriteRule ^([^/]+)/$ $1.php
+RewriteRule ^([^/]+)/([^/]+)/$ /$1/$2.php [N]
+RewriteRule ^([^/]+)/([^/]+)/$ /$1/$2.html [N]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !(\.[a-zA-Z0-9]{1,5}|/)$
+RewriteRule (.*)$ /$1/ [R=301,L]
