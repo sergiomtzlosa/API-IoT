@@ -1,2 +1,17 @@
-FROM mysql
+FROM mariadb
 ADD ./database/sensordb_DDL.sql /docker-entrypoint-initdb.d/
+
+
+# FROM mysql
+# ADD ./database/sensordb_DDL.sql /docker-entrypoint-initdb.d/
+# 
+# RUN echo "[client]" >> /etc/my.cnf
+# RUN echo "default-character-set=utf8" >> /etc/my.cnf
+# 
+# RUN echo "[mysql]" >> /etc/my.cnf
+# RUN echo "default-character-set=utf8" >> /etc/my.cnf
+# 
+# 
+# RUN echo "[mysqld]" >> /etc/my.cnf
+# RUN echo "collation-server = utf8_unicode_ci" >> /etc/my.cnf
+# RUN echo "character-set-server = utf8" >> /etc/my.cnf

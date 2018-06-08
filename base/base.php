@@ -62,7 +62,7 @@ class BaseObject {
       $this->die_json(Messages::$INTERNAL_ERROR, HTTP_CODES::$HTTP_GENERIC_ERROR);
     }
 
-    $db_link->set_charset('latin1');
+    // $db_link->set_charset('utf8');
 
     mysqli_select_db($db_link, $db_used);
 

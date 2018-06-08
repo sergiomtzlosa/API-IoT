@@ -1,4 +1,17 @@
 FROM php:7.0-apache
+
+#Install dependencies
+RUN pecl install mongodb && echo "extension=mongodb.so" > /usr/local/etc/php/conf.d/mongo.ini
+RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli
+
+# Copy project src
 COPY ./ /var/www/html/
-COPY ./htacces_origin /var/www/html/.htaccess
+
+# Permissions check
+RUN chown -R www-data:www-data /var/www/html/*
+
+# Enable htaccess
+RUN mv /var/www/html/htaccess_origin /var/www/html/.htaccess
+
+# Apache enable rewrite
 RUN a2enmod rewrite

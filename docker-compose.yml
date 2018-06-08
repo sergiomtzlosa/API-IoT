@@ -1,4 +1,4 @@
-version: '3'
+version: '2'
 services:
   web:
     build:
@@ -6,16 +6,21 @@ services:
       dockerfile: ./docker/Dockerfile_web
     ports:
       - "8080:80"
-  sql:
+  database:
     build:
       context: ./
       dockerfile: ./docker/Dockerfile_mysql
     environment:
       MYSQL_ROOT_USER: root
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_ROOT_DATABASE: sensors
+      MYSQL_DATABASE: sensors
     volumes:
       - mysql_data:/var/lib/mysql
+  mongo:
+    image: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
 volumes:
   mysql_data:
-  # mongo:
+  
