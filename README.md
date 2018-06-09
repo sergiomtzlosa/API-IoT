@@ -13,6 +13,8 @@ your are using, the database will care about all!!!
 
 ## Technology used
 
+- PHP 7.1.16 
+
 - MariaDB Server 5.5.57
 
 - MongoDB Server 3.4.15
