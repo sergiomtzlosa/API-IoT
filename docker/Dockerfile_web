@@ -1,5 +1,8 @@
 FROM php:7.0-apache
 
+
+RUN apt-get update && apt-get -y install libssl-dev
+
 #Install dependencies
 RUN pecl install mongodb && echo "extension=mongodb.so" > /usr/local/etc/php/conf.d/mongo.ini
 RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli
