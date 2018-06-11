@@ -11,6 +11,14 @@ To use this project it is mandatory to install MySQL or MariaDB, MongoDB, mysqli
 The system uses security token, they expire every 24 hours, if you want to renew then just perform login again with the same credentials of the user
 your are using, the database will care about all!!!
 
+## Technology used
+
+- PHP 7.1.16 
+
+- MariaDB Server 5.5.57
+
+- MongoDB Server 3.4.15
+
 ## Installation
 
 - Launch the script for database creation in your MySQL:
