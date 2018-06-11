@@ -13,7 +13,7 @@ your are using, the database will care about all!!!
 
 ## Technology used
 
-- PHP 7.1.16 
+- PHP 7.1.16
 
 - MariaDB Server 5.5.57
 
@@ -89,13 +89,13 @@ This project has an htaccess file to hide the file extensions, rename the file t
 
 ## Examples
 
-Lets say that you have a folder called "sensors" on your Apache DocumentRoot, then all services will point on:
+Lets say that you have the project on your Apache DocumentRoot listening on port 8080, then all services will point on:
 
-``` /sensors/api/login ```
+``` /api/login ```
 
-``` /sensors/api/users ```
+``` /api/users ```
 
-``` /sensors/api/values ```
+``` /api/values ```
 
 You can use the Postman file in "database/Sensors (Github).postman_collection.json", if you do not have Postman get it here:
 
@@ -109,7 +109,7 @@ These are some examples for each request with cURL program:
 
 ```
 curl -X POST \
-  http://localhost:8080/sensors/api/users \
+  http://localhost:8080/api/users \
   -H 'Cache-Control: no-cache' \
   -H 'Content-Type: application/json' \
   -H 'Token: aca6038665c811e8a96100089be8caec' \
@@ -127,7 +127,7 @@ curl -X POST \
 
 ```
 curl -X PUT \
-  http://localhost:8080/sensors/api/users \
+  http://localhost:8080/api/users \
   -H 'Cache-Control: no-cache' \
   -H 'Content-type: application/json' \
   -H 'Token: aca6038665c811e8a96100089be8caec' \
@@ -146,7 +146,7 @@ curl -X PUT \
 
 ```
 curl -X DELETE \
-  http://localhost:8080/sensors/api/users \
+  http://localhost:8080/api/users \
   -H 'Cache-Control: no-cache' \
   -H 'Content-type: application/json' \
   -H 'Token: aca6038665c811e8a96100089be8caec' \
@@ -157,7 +157,7 @@ curl -X DELETE \
 
 ```
 curl -X GET \
-  'http://localhost:8080/sensors/api/users?user_id=1' \
+  'http://localhost:8080/api/users?user_id=1' \
   -H 'Cache-Control: no-cache' \
   -H 'Content-type: application/json' \
   -H 'Token: aca6038665c811e8a96100089be8caec' \
@@ -167,7 +167,7 @@ curl -X GET \
 
 ```
 curl -X POST \
-  http://localhost:8080/sensors/api/login \
+  http://localhost:8080/api/login \
   -H 'Cache-Control: no-cache' \
   -H 'Content-type: application/json' \
   -d '{
@@ -180,7 +180,7 @@ curl -X POST \
 
 ```
 curl -X POST \
-  http://localhost:8080/sensors/api/values \
+  http://localhost:8080/api/values \
   -H 'Cache-Control: no-cache' \
   -H 'Content-type: application/json' \
   -H 'Token: aca6038665c811e8a96100089be8caec' \
@@ -199,7 +199,7 @@ curl -X POST \
 
 ```
 curl -X PUT \
-  http://localhost:8080/sensors/api/values \
+  http://localhost:8080/api/values \
   -H 'Cache-Control: no-cache' \
   -H 'Content-type: application/json' \
   -H 'Token: aca6038665c811e8a96100089be8caec' \
@@ -212,7 +212,7 @@ curl -X PUT \
 
 ```
 curl -X PUT \
-  http://localhost:8080/sensors/api/values \
+  http://localhost:8080/api/values \
   -H 'Cache-Control: no-cache' \
   -H 'Content-type: application/json' \
   -H 'Token: aca6038665c811e8a96100089be8caec' \

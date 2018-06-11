@@ -6,7 +6,7 @@
 	},
 	"item": [
 		{
-			"name": "localhost:8080/sensors/api/users",
+			"name": "localhost:8080/api/users",
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -27,13 +27,12 @@
 					"raw": "{\n\t\"username\" : \"user_3\",\n\t\"password\" : \"passwordUser3\",\n\t\"name\" : \"User3\",\n\t\"surname\" : \"User3 description\",\n\t\"description\" : \"API user\",\n\t\"admin\" : \"0\"\n}\n"
 				},
 				"url": {
-					"raw": "localhost:8080/sensors/api/users",
+					"raw": "localhost:8080/api/users",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"sensors",
 						"api",
 						"users"
 					]
@@ -42,7 +41,7 @@
 			"response": []
 		},
 		{
-			"name": "localhost:8080/sensors/api/users",
+			"name": "localhost:8080/api/users",
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -63,13 +62,12 @@
 					"raw": "{\n\t\"username\" : \"user_3\",\n\t\"password\" : \"passwordUser3\",\n\t\"name\" : \"User3\",\n\t\"surname\" : \"User3 description modified\",\n\t\"description\" : \"API user\",\n\t\"admin\" : \"0\",\n\t\"user_id\" : \"3\"\n}\n"
 				},
 				"url": {
-					"raw": "localhost:8080/sensors/api/users",
+					"raw": "localhost:8080/api/users",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"sensors",
 						"api",
 						"users"
 					]
@@ -78,7 +76,7 @@
 			"response": []
 		},
 		{
-			"name": "localhost:8080/sensors/api/users",
+			"name": "localhost:8080/api/users",
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -99,13 +97,12 @@
 					"raw": "{\"user_id\" : \"3\"}"
 				},
 				"url": {
-					"raw": "localhost:8080/sensors/api/users",
+					"raw": "localhost:8080/api/users",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"sensors",
 						"api",
 						"users"
 					]
@@ -114,7 +111,7 @@
 			"response": []
 		},
 		{
-			"name": "localhost:8080/sensors/api/users",
+			"name": "localhost:8080/api/users",
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -135,13 +132,12 @@
 					"raw": "{\"clave\" : \"valor\"}"
 				},
 				"url": {
-					"raw": "localhost:8080/sensors/api/users?user_id=1",
+					"raw": "localhost:8080/api/users?user_id=1",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"sensors",
 						"api",
 						"users"
 					],
@@ -156,7 +152,7 @@
 			"response": []
 		},
 		{
-			"name": "localhost:8080/sensors/api/login",
+			"name": "localhost:8080/api/login",
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -173,13 +169,12 @@
 					"raw": "{\n\t\"username\" : \"api_user\",\n\t\"password\" : \"api_user1234\"\n}"
 				},
 				"url": {
-					"raw": "localhost:8080/sensors/api/login",
+					"raw": "localhost:8080/api/login",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"sensors",
 						"api",
 						"login"
 					]
@@ -188,7 +183,7 @@
 			"response": []
 		},
 		{
-			"name": "localhost:8080/sensors/api/values",
+			"name": "localhost:8080/api/values",
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -209,13 +204,12 @@
 					"raw": "{\n\t\"key1\" : \"value1\",\n\t\"key2\" : \"value2\",\n\t\"key3\" : \"value3\",\n\t\"key4\" : \"value4\",\n\t\"key5\" : \"value5\",\n\t\"key6\" : \"value6\",\n\t\"key7\" : \"value7\"\n}"
 				},
 				"url": {
-					"raw": "localhost:8080/sensors/api/values",
+					"raw": "localhost:8080/api/values",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"sensors",
 						"api",
 						"values"
 					]
@@ -224,7 +218,7 @@
 			"response": []
 		},
 		{
-			"name": "localhost:8080/sensors/api/values",
+			"name": "localhost:8080/api/values",
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -245,13 +239,12 @@
 					"raw": "{\n\t\"docs\" : \"1\",\n\t\"date_from\" : \"2018-04-01 00:00:00\",\n\t\"date_to\" : \"2018-04-01 00:00:00\"\n}"
 				},
 				"url": {
-					"raw": "localhost:8080/sensors/api/values",
+					"raw": "localhost:8080/api/values",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"sensors",
 						"api",
 						"values"
 					]
