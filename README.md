@@ -69,6 +69,20 @@ For instance, this is my current extension path on mac:
 
 ``` extension="/usr/local/php5-7.1.13-20180201-134129/lib/php/extensions/no-debug-non-zts-20160303/mongodb.so" ```
 
+## Docker installation
+
+This project includes a docker-compose file that you can use to easily set up the project. If you have installed docker and docker-compose you don't need anything else to start with. You have to run the command:
+
+```docker-compose up```
+
+There are some caveats to be aware:
+
+- The docker configuration is just a testing one, you should use the dockerfiles on the docker folder as an starting point.
+- The relational database is created in a persistent docker volume and only is populated when the image is created, if you want to reinstall the system you will have to delete the volume.
+- The configuration file ```utils/config.php``` is populated with the docker values, if you change the dockerfiles or the docker-compose.yml included you will have to change also this file.
+- The project files are copied to the web image, if you change the source code you will have to rebuild the image ```docker-compose build```, you can also make a path mapping between the source code and the workdir of the image.
+
+
 ## Database and web services credentials
 
 | Username      | Password      |
@@ -109,6 +123,7 @@ These are some examples for each request with cURL program:
 
 ```
 curl -X POST \
+  -L \
   http://localhost:8080/api/users \
   -H 'Cache-Control: no-cache' \
   -H 'Content-Type: application/json' \
@@ -127,6 +142,7 @@ curl -X POST \
 
 ```
 curl -X PUT \
+  -L \
   http://localhost:8080/api/users \
   -H 'Cache-Control: no-cache' \
   -H 'Content-type: application/json' \
@@ -146,6 +162,7 @@ curl -X PUT \
 
 ```
 curl -X DELETE \
+  -L \
   http://localhost:8080/api/users \
   -H 'Cache-Control: no-cache' \
   -H 'Content-type: application/json' \
@@ -157,6 +174,7 @@ curl -X DELETE \
 
 ```
 curl -X GET \
+  -L \
   'http://localhost:8080/api/users?user_id=1' \
   -H 'Cache-Control: no-cache' \
   -H 'Content-type: application/json' \
@@ -167,6 +185,7 @@ curl -X GET \
 
 ```
 curl -X POST \
+  -L \
   http://localhost:8080/api/login \
   -H 'Cache-Control: no-cache' \
   -H 'Content-type: application/json' \
@@ -180,6 +199,7 @@ curl -X POST \
 
 ```
 curl -X POST \
+  -L \
   http://localhost:8080/api/values \
   -H 'Cache-Control: no-cache' \
   -H 'Content-type: application/json' \
@@ -199,6 +219,7 @@ curl -X POST \
 
 ```
 curl -X PUT \
+  -L \
   http://localhost:8080/api/values \
   -H 'Cache-Control: no-cache' \
   -H 'Content-type: application/json' \
@@ -212,6 +233,7 @@ curl -X PUT \
 
 ```
 curl -X PUT \
+  -L \
   http://localhost:8080/api/values \
   -H 'Cache-Control: no-cache' \
   -H 'Content-type: application/json' \
